@@ -68,4 +68,27 @@ public class UserRepository : IUserRepository
             .Where(u => u.Role == role)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<(IEnumerable<User> Items, int TotalCount)> GetPagedUsersAsync(int pageNumber, int pageSize, string? searchTerm, CancellationToken cancellationToken = default)
+    {
+        var query = _context.Users.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(searchTerm))
+        {
+            var search = searchTerm.ToLower();
+            query = query.Where(u => 
+                u.Name.ToLower().Contains(search) || 
+                (u.Email != null && u.Email.ToLower().Contains(search)));
+        }
+
+        var totalCount = await query.CountAsync(cancellationToken);
+
+        var users = await query
+            .OrderByDescending(u => u.CreatedAt)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync(cancellationToken);
+
+        return (users, totalCount);
+    }
 }

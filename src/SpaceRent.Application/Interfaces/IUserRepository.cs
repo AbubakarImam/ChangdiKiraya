@@ -12,4 +12,5 @@ public interface IUserRepository
     Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
     Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<IEnumerable<User>> GetUsersByRoleAsync(UserRole role, CancellationToken cancellationToken = default);
+    Task<(IEnumerable<User> Items, int TotalCount)> GetPagedUsersAsync(int pageNumber, int pageSize, string? searchTerm, CancellationToken cancellationToken = default);
 }

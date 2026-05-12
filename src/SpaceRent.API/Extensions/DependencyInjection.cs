@@ -24,6 +24,8 @@ public static class DependencyInjection
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<IAmenityRepository, AmenityRepository>();
         services.AddScoped<ISpaceMediaRepository, SpaceMediaRepository>();
+        services.AddScoped<IReviewRepository, ReviewRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<IFileStorageService, LocalFileStorageService>();
 
         // Identity

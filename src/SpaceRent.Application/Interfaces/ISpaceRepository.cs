@@ -13,4 +13,5 @@ public interface ISpaceRepository
     Task<Space> AddAsync(Space space, CancellationToken cancellationToken = default);
     Task UpdateAsync(Space space, CancellationToken cancellationToken = default);
     Task DeleteAsync(Space space, CancellationToken cancellationToken = default);
+    Task<List<Space>> GetSpacesByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default);
 }

@@ -151,4 +151,14 @@ public class SpaceRepository : ISpaceRepository
         _context.Spaces.Remove(space);
         await _context.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<List<Space>> GetSpacesByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default)
+    {
+        return await _context.Spaces
+            .Include(s => s.SpaceAmenities)
+                .ThenInclude(sa => sa.Amenity)
+            .Include(s => s.Media)
+            .Where(s => s.OwnerId == ownerId)
+            .ToListAsync(cancellationToken);
+    }
 }
