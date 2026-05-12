@@ -29,7 +29,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserD
         return new UserDto(
             createdUser.Id,
             createdUser.Name,
-            createdUser.Email,
+            createdUser.Email ?? string.Empty,
             createdUser.Role);
     }
 }

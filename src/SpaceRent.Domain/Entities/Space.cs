@@ -24,4 +24,5 @@ public class Space
     public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     public ICollection<SpaceAmenity> SpaceAmenities { get; set; } = new List<SpaceAmenity>();
     public ICollection<SpaceMedia> Media { get; set; } = new List<SpaceMedia>();
+    public ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

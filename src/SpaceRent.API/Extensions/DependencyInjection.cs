@@ -27,7 +27,7 @@ public static class DependencyInjection
         services.AddScoped<IFileStorageService, LocalFileStorageService>();
 
         // Identity
-        services.AddIdentity<SpaceRent.Domain.Entities.User, Microsoft.AspNetCore.Identity.IdentityRole<Guid>>()
+        services.AddIdentity<SpaceRent.Domain.Entities.User, SpaceRent.Domain.Entities.Role>()
             .AddEntityFrameworkStores<SpaceRentDbContext>()
             .AddDefaultTokenProviders();
 

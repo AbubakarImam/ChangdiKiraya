@@ -40,7 +40,7 @@ public class GoogleLoginCommandHandler : IRequestHandler<GoogleLoginCommand, Aut
                 Email = payload.Email,
                 UserName = payload.Email,
                 Name = payload.Name ?? "Google User",
-                Role = UserRole.User,
+                Role = UserRole.Customer,
                 EmailConfirmed = true // Trusted from Google
             };
 

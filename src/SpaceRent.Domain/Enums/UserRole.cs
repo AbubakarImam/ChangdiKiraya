@@ -2,7 +2,8 @@ namespace SpaceRent.Domain.Enums;
 
 public enum UserRole
 {
-    User,
-    Owner,
-    Admin
+    Customer,      // Regular customer
+    SpaceOwner,    // Space owner
+    Admin,         // Administrator
+    Moderator      // Moderator
 }
