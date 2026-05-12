@@ -7,4 +7,9 @@ public class Review
     public Guid UserId { get; set; }
     public int Rating { get; set; }
     public string Comment { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    // Navigation properties
+    public virtual Space? Space { get; set; }
+    public virtual User? User { get; set; }
 }

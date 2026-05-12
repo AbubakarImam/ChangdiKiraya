@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Application\\SpaceRent.Application.csproj": {}
+    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Application\\SpaceRent.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Application\\SpaceRent.Application.csproj": {
+    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Application\\SpaceRent.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Application\\SpaceRent.Application.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Application\\SpaceRent.Application.csproj",
         "projectName": "SpaceRent.Application",
-        "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Application\\SpaceRent.Application.csproj",
+        "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Application\\SpaceRent.Application.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Application\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj": {
-                "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj"
+              "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj": {
+    "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj",
         "projectName": "SpaceRent.Domain",
-        "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj",
+        "projectPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\SpaceRent.Domain.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.Domain\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya-1\\src\\SpaceRent.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
