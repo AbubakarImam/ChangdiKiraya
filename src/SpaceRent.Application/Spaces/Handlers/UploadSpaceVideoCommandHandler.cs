@@ -1,4 +1,5 @@
 using MediatR;
+using SpaceRent.Application.Common.FileUpload;
 using SpaceRent.Application.Interfaces;
 using SpaceRent.Application.Spaces.Commands;
 using SpaceRent.Application.Spaces.DTOs;
@@ -13,8 +14,6 @@ public class UploadSpaceVideoCommandHandler : IRequestHandler<UploadSpaceVideoCo
     private readonly ISpaceRepository _spaceRepository;
     private readonly ISpaceMediaRepository _mediaRepository;
     private readonly IFileStorageService _fileStorage;
-
-    private static readonly string[] AllowedTypes = ["video/mp4", "video/webm", "video/quicktime"];
 
     public UploadSpaceVideoCommandHandler(
         ISpaceRepository spaceRepository,
@@ -31,13 +30,9 @@ public class UploadSpaceVideoCommandHandler : IRequestHandler<UploadSpaceVideoCo
         var space = await _spaceRepository.GetByIdAsync(request.SpaceId, cancellationToken)
             ?? throw new NotFoundException($"Space with id '{request.SpaceId}' was not found.");
 
-        if (!AllowedTypes.Contains(request.File.ContentType.ToLower()))
-            throw new DomainException("Video must be mp4, webm, or mov.");
+        FileUploadValidator.Validate(request.File, UploadRules.AllowedVideoTypes, UploadRules.MaxVideoSizeBytes);
 
-        if (request.File.Length > 200 * 1024 * 1024) // 200MB limit
-            throw new DomainException("Video exceeds the 200MB size limit.");
-
-        // Replace existing video if one exists
+        // Replace existing video
         var existing = await _mediaRepository.GetBySpaceIdAsync(request.SpaceId, cancellationToken);
         var existingVideo = existing.FirstOrDefault(m => m.MediaType == MediaType.Video);
         if (existingVideo != null)
@@ -46,10 +41,10 @@ public class UploadSpaceVideoCommandHandler : IRequestHandler<UploadSpaceVideoCo
             await _mediaRepository.DeleteAsync(existingVideo, cancellationToken);
         }
 
-        var safeFileName = $"{Guid.NewGuid()}{Path.GetExtension(request.File.FileName)}";
+        var safeFileName = FileUploadValidator.GenerateSafeFileName(request.File);
 
         using var stream = request.File.OpenReadStream();
-        var url = await _fileStorage.SaveAsync(stream, safeFileName, request.File.ContentType, "spaces/videos", cancellationToken);
+        var url = await _fileStorage.SaveAsync(stream, safeFileName, request.File.ContentType, UploadFolders.SpaceVideos, cancellationToken);
 
         var media = new SpaceMedia
         {

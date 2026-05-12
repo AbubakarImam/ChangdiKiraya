@@ -27,6 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles(); // Serves uploaded files from wwwroot/uploads
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

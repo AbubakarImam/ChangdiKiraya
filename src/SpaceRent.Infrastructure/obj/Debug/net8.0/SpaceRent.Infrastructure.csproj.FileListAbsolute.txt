@@ -17,3 +17,4 @@ C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Infrastructure\obj\Debug\n
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Infrastructure\obj\Debug\net8.0\SpaceRent.Infrastructure.pdb
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Infrastructure\obj\Debug\net8.0\SpaceRent.Infrastructure.genruntimeconfig.cache
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Infrastructure\obj\Debug\net8.0\ref\SpaceRent.Infrastructure.dll
+C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Infrastructure\obj\Debug\net8.0\SpaceRent.Infrastructure.sourcelink.json

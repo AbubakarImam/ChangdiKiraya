@@ -9,3 +9,5 @@ C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\Sp
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\refint\SpaceRent.Domain.dll
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\SpaceRent.Domain.pdb
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\ref\SpaceRent.Domain.dll
+C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\SpaceRent.Domain.sourcelink.json
+C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Domain\obj\Debug\net8.0\SpaceRent.Domain.csproj.AssemblyReference.cache

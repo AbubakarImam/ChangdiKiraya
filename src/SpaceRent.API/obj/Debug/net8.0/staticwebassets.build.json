@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "K0vTAHi6QZBCPCrPDVSJnWA5P4t40vRGslC0lDmiiZc=",
+  "Hash": "0nlY467edYQ/D/cC5m+GFePz9wFpekIJ8BUm9L/c7BU=",
   "Source": "SpaceRent.API",
   "BasePath": "_content/SpaceRent.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "SpaceRent.API\\wwwroot",
+      "Source": "SpaceRent.API",
+      "ContentRoot": "C:\\Users\\hp\\Documents\\DEV\\ChangdiKiraya\\src\\SpaceRent.API\\wwwroot\\",
+      "BasePath": "_content/SpaceRent.API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

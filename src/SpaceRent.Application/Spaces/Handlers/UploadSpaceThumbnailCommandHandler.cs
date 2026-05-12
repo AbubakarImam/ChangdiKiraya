@@ -1,4 +1,5 @@
 using MediatR;
+using SpaceRent.Application.Common.FileUpload;
 using SpaceRent.Application.Interfaces;
 using SpaceRent.Application.Spaces.Commands;
 using SpaceRent.Application.Spaces.DTOs;
@@ -13,8 +14,6 @@ public class UploadSpaceThumbnailCommandHandler : IRequestHandler<UploadSpaceThu
     private readonly ISpaceRepository _spaceRepository;
     private readonly ISpaceMediaRepository _mediaRepository;
     private readonly IFileStorageService _fileStorage;
-
-    private static readonly string[] AllowedTypes = ["image/jpeg", "image/png", "image/webp"];
 
     public UploadSpaceThumbnailCommandHandler(
         ISpaceRepository spaceRepository,
@@ -31,13 +30,9 @@ public class UploadSpaceThumbnailCommandHandler : IRequestHandler<UploadSpaceThu
         var space = await _spaceRepository.GetByIdAsync(request.SpaceId, cancellationToken)
             ?? throw new NotFoundException($"Space with id '{request.SpaceId}' was not found.");
 
-        if (!AllowedTypes.Contains(request.File.ContentType.ToLower()))
-            throw new DomainException("Thumbnail must be jpg, png, or webp.");
+        FileUploadValidator.Validate(request.File, UploadRules.AllowedThumbnailTypes, UploadRules.MaxThumbnailSizeBytes);
 
-        if (request.File.Length > 5 * 1024 * 1024) // 5MB limit for thumbnail
-            throw new DomainException("Thumbnail exceeds the 5MB size limit.");
-
-        // Replace existing thumbnail if one exists
+        // Replace existing thumbnail
         var existing = await _mediaRepository.GetThumbnailBySpaceIdAsync(request.SpaceId, cancellationToken);
         if (existing != null)
         {
@@ -45,10 +40,10 @@ public class UploadSpaceThumbnailCommandHandler : IRequestHandler<UploadSpaceThu
             await _mediaRepository.DeleteAsync(existing, cancellationToken);
         }
 
-        var safeFileName = $"{Guid.NewGuid()}{Path.GetExtension(request.File.FileName)}";
+        var safeFileName = FileUploadValidator.GenerateSafeFileName(request.File);
 
         using var stream = request.File.OpenReadStream();
-        var url = await _fileStorage.SaveAsync(stream, safeFileName, request.File.ContentType, "spaces/thumbnails", cancellationToken);
+        var url = await _fileStorage.SaveAsync(stream, safeFileName, request.File.ContentType, UploadFolders.SpaceThumbnails, cancellationToken);
 
         var media = new SpaceMedia
         {

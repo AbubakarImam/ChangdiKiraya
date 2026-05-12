@@ -1,4 +1,5 @@
 using MediatR;
+using SpaceRent.Application.Common.FileUpload;
 using SpaceRent.Application.Interfaces;
 using SpaceRent.Application.Spaces.Commands;
 using SpaceRent.Application.Spaces.DTOs;
@@ -13,8 +14,6 @@ public class UploadSpaceImagesCommandHandler : IRequestHandler<UploadSpaceImages
     private readonly ISpaceRepository _spaceRepository;
     private readonly ISpaceMediaRepository _mediaRepository;
     private readonly IFileStorageService _fileStorage;
-
-    private static readonly string[] AllowedImageTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
     public UploadSpaceImagesCommandHandler(
         ISpaceRepository spaceRepository,
@@ -31,21 +30,18 @@ public class UploadSpaceImagesCommandHandler : IRequestHandler<UploadSpaceImages
         var space = await _spaceRepository.GetByIdAsync(request.SpaceId, cancellationToken)
             ?? throw new NotFoundException($"Space with id '{request.SpaceId}' was not found.");
 
+        // Validate all files upfront before saving any
+        FileUploadValidator.ValidateAll(request.Files, UploadRules.AllowedImageTypes, UploadRules.MaxImageSizeBytes);
+
         var results = new List<SpaceMediaDto>();
 
         foreach (var file in request.Files)
         {
-            if (!AllowedImageTypes.Contains(file.ContentType.ToLower()))
-                throw new DomainException($"File '{file.FileName}' is not a supported image type. Allowed: jpg, png, webp, gif.");
-
-            if (file.Length > 10 * 1024 * 1024) // 10MB limit
-                throw new DomainException($"File '{file.FileName}' exceeds the 10MB size limit.");
-
-            var safeFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var safeFileName = FileUploadValidator.GenerateSafeFileName(file);
             var order = await _mediaRepository.GetNextDisplayOrderAsync(request.SpaceId, MediaType.Image, cancellationToken);
 
             using var stream = file.OpenReadStream();
-            var url = await _fileStorage.SaveAsync(stream, safeFileName, file.ContentType, "spaces/images", cancellationToken);
+            var url = await _fileStorage.SaveAsync(stream, safeFileName, file.ContentType, UploadFolders.SpaceImages, cancellationToken);
 
             var media = new SpaceMedia
             {

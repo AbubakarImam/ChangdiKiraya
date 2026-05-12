@@ -13,3 +13,4 @@ C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Application\obj\Debug\net8
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Application\obj\Debug\net8.0\refint\SpaceRent.Application.dll
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Application\obj\Debug\net8.0\SpaceRent.Application.pdb
 C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Application\obj\Debug\net8.0\ref\SpaceRent.Application.dll
+C:\Users\hp\Documents\DEV\ChangdiKiraya\src\SpaceRent.Application\obj\Debug\net8.0\SpaceRent.Application.sourcelink.json

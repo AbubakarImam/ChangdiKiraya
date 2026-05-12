@@ -1,15 +1,16 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SpaceRent.Domain.Entities;
 
 namespace SpaceRent.Infrastructure.Data;
 
-public class SpaceRentDbContext : DbContext
+public class SpaceRentDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
     public SpaceRentDbContext(DbContextOptions<SpaceRentDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
     public DbSet<Space> Spaces => Set<Space>();
     public DbSet<Booking> Bookings => Set<Booking>();
     public DbSet<Payment> Payments => Set<Payment>();
