@@ -8,4 +8,7 @@ public record BookingDto(
     Guid UserId,
     DateTime StartTime,
     DateTime EndTime,
-    BookingStatus Status);
+    BookingStatus Status,
+    string? SpaceTitle = null,
+    string? UserName = null,
+    Guid? SpaceOwnerId = null);

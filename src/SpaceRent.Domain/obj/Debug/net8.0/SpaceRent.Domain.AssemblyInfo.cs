@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpaceRent.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edb48cc7ef5b31042ceac69afcfb310ab4703597")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d8408c987f50660ea7ce85f1f98316547cb25469")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpaceRent.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpaceRent.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
